@@ -14,3 +14,249 @@ the o/p writeen in html code, at last of body tag,<script>
 the o/p will be Go Live do inspect, console, refresh teh page and then u will be see, hello world.
 but u can also, write it create otherfile, like style.css, the best practice,instaed of inline js code, make other file and link it.in body tag by <script src="lecture1.js">
 </script>
+
+Variables and Datatypes in js=>
+variables are named memory location and means if I want to store somewhere in the memory so, how to access thta content, it can be accessed by address, and let's say there are large number of contant, so, how to access that, by using datatypes,that has a fixed size,and to name the memory location where the content is given  by address, technically called variables, 
+there are 3 different variables in js that is var,let and const.
+var=> var type of variable is function scoped,globally scoped but not block-scoped.
+globally-scoped eg;
+//var name = "Muskan";
+//if(true){
+//    console.log(name);
+//}
+it will run and print Muskan
+
+function-scoped eg;
+//function solve(){
+//    var name = "Muskan";
+//    console.log(name);
+//}
+//solve();
+it will run and print Muskan
+
+block-scoped eg;
+eg1;
+//function solve2(){
+//    var age = 90;
+//    console.log(age);
+//}
+
+//console.log(age);
+//solve2();
+
+it will run but give error, age is not defined.
+
+eg2;
+
+//function solve2(){
+//    var age = 90;
+//    console.log(age);
+//}
+
+//console.log(age);
+
+it will run but give error, age is not defined.
+
+eg3;
+//function solve2(){
+//    var age = 90;
+//    console.log(age);
+//}
+
+
+//solve2();
+
+it will run and print 90
+
+NOW, let=>
+eg1;
+//let age = 89;
+//console.log(age);
+it will run and print 89
+
+eg2;
+//if(true){
+//    let age = 89;
+
+//}
+//console.log(age);
+it will give error
+
+eg3;
+//function solve3(){
+//    let age = 89;
+//    console.log(age);
+
+//}
+//solve3();
+it will give 89
+
+eg4;
+//let age = 89;
+//if(true){
+//    console.log(age);
+//}
+it will give 89
+
+eg5;
+//let age = 89;
+//let age = 90; 
+it will give error,redeclare of age
+
+eg6;
+//let age = 89;
+//age = 90;
+it will not give error
+
+eg7;
+console.log(age); // ❌ ReferenceError
+let age = 89;
+With let, you cannot access the variable before its declaration.
+This is called the Temporal Dead Zone (TDZ).
+
+eg8;
+if (true) {
+    let x = 10;
+    var y = 20;
+}
+console.log(x); // ❌ ReferenceError
+console.log(y); // ✅ 20
+
+eg9;
+let age = 89;
+{
+    let age = 90;
+    console.log(age); // ✅ 90
+}
+console.log(age); // ✅ 89
+
+**block-scoped means the decalre of the variable annd accessing it ony exist it inside block , not outside the block.**
+
+what is dynamically typed language?
+==> it means if I write 
+let age = 89;
+age = "MUSKAN";
+age = true;
+age = null;
+it will not no error, why . bcz, this is called dynamically typed language,that in a varible can put different types of data.
+
+
+NOW, const=>
+
+//const c = "animal";
+//console.log(c);
+it will print animal
+
+//const c = "animal";
+//c = "plant";
+it will give error;Assignment to constant variable(type error).
+
+//const c = "animal";
+//const c;
+it will give error;SyntaxError: Identifier 'c' has already been declared
+
+**RULES TO REMEMBER**
+- Using **var**:  
+  You can declare and redeclare the same variable multiple times.  
+  Example:  
+  ```js
+  var a = 10;
+  var a = 20;
+  a = 20; // works fine
+  ```
+  ✅ Works — both redeclaration and reassignment are allowed.
+
+- Using **let**:  
+  You can assign a new value but cannot redeclare the same variable in the same scope.  
+  Example:  
+  ```js
+  let a = 10;
+  a = 20; // works
+  let a = 30; // error
+  ```
+  ❌ Redeclaration not allowed, ✅ reassignment allowed.
+
+- Using **const**:  
+  You cannot redeclare or reassign a constant variable.  
+  Example:  
+  ```js
+  const a = 10;
+  a = 20; // error
+  const a = 25; // error
+  ```
+  ❌ Both redeclaration and reassignment are not allowed.
+
+In short:  
+- `var` → flexible, function-scoped.  
+- `let` → block-scoped, allows reassignment only.  
+- `const` → block-scoped, fixed value once declared.
+
+**we use let and const variable in practice and projects.**
+
+*VARIABLE NAMING CONVENTION*
+1.can start with number,_,$
+2.no space b/w variables
+3.camel case eg; marksOfTopper and namesOfTopper
+4.meaningful name of variable
+5.should not use reserved keywords like class,new,null,etc.
+
+now,Datatypes=>
+what type of data and the size of data.
+there are 2 types of datatypes-Primitive and Non-Primitive .
+Primitive datatypes-
+Number range: -(2^53-1) to (2^53-1)
+String
+Boolean
+Undefined
+null
+BigInt(2^53-1)
+Symbol
+
+difference b/w undefined and null=
+let age;
+console.log(90);
+**in o/p- give undefined**
+
+let age = null;
+console.log(age);
+**in o/p- give null**
+
+how, can we check, the range of number and BigInt-
+eg1;
+console.log(Number.MAX_SAFE_INTEGER);  // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER);  // -9007199254740991
+
+eg2;
+let x = 9007199254740991;
+console.log(x + 1); // 9007199254740992
+console.log(x + 2); // 9007199254740992 (⚠️ precision lost!)
+give same result, precision lost.
+
+eg3;
+let big = 9007199254740991n;
+console.log(big + 2n); // 9007199254740993n 
+no precision loss
+
+If, want to check what type of data is in variable so, use typeof;
+let age = 89;
+console.log(typeof(age));
+o/p-number
+
+Symbol datatype-
+Uniqueness: Every Symbol is guaranteed to be unique, even if two symbols have the same description.
+Primitive type: Like string, number, boolean, null, undefined, and bigint, symbol is a primitive.
+Not auto-converted: Symbols don’t automatically convert to strings or numbers — trying to print them directly can throw errors unless you explicitly convert.
+Use case: Often used as object property keys to avoid accidental overwriting.
+eg;
+let id1 = Symbol("id");
+let id2 = Symbol("id");
+
+console.log(id1 === id2); // false (unique even with same description)
+
+let obj = {
+    [id1]: "Muskan",
+    [id2]: "Coder"
+};
+
+console.log(obj[id1]); // Muskan
+console.log(obj[id2]); // Coder
