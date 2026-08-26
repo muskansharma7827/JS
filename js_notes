@@ -380,3 +380,96 @@ switch(num){
     default: console.log('hiii');
 }
 in switch , the varaiable is compared wiuth the case.
+
+LOOPS AND STRINGS IN JS->
+if we  didnot use loops and the code will get bulky,buggy,not a maintenable that's why we use loops.
+loops means to run set of instructions repeatedly execute, so, use loops.
+the basic loops aviable - 
+for lop,swhile,do-while loop,
+but there are more loops in js- like for-in loop,for each,for of loop.
+for loop-
+syntax: for(initialisation:condition:updation){
+  //
+}
+in js we cannot write int i for initilistaion, we write let.
+break means to break the loop,and continue means to skip the current iteration.
+now,while loop-
+initialisation
+while(condition){
+  //
+  updation
+}
+now, do-while loop
+syntax-
+initialisation
+do{
+  //looplogic
+  updation
+}
+while(condition)
+
+NOW,STRINGS IN JS->
+strings is a sequnce of characters,
+let name = "muskan";
+let last name = 'muskan';
+bioth works fine,
+now imp** if
+let s1="hello
+world";
+and 
+let s1='hello
+world';
+both will give error, so,
+there is also the 3rd way to print strings-
+let s2=`hello
+world`;
+it will print and this is called template strings.
+4th way of printing -
+let sname = new String("muskan");
+console.log(sname);
+o/p=
+[String: 'muskan']
+,now, strings operation-
+imp**
+if I want to access the muskan in n4,
+let n4="muskan";
+with template strings-
+let n4 = `${n1} and ${n2}`;              //dollar with curly braces
+console.log(n4);
+
+now, how to find lengtn of string-
+//console.log(stringname.length);//
+//console.log(n1.toUpperCase());
+console.log(n2.toLowerCase());
+console.log(n1.substring(0,4));     in substring, it does not include the character at teh endindex position.
+console.log(n1.substring(0));
+console.log(n1.substring(4));
+//
+now, split operation-
+
+let sentence1="welcome to this beautiful world";
+let words = sentence1.split(" ");
+console.log(words);
+//splitting based on spaces//
+
+**imp**
+let sentence2 = " welcome to the \*mesmersing\* world";
+console.log(sentence2);
+o/p-
+welcome to the *mesmersing* world
+**imp**
+let s2= " hello \\jee \\kaise \\ho \\saare";
+let w2 = s2.split("\\");
+console.log(w2);
+o/p-
+[ ' hello ', 'jee ', 'kaise ', 'ho ', 'saare' ]
+
+now,join method-after splitting then join it.
+let s2= " hello \\jee \\kaise \\ho \\saare";
+let w2 = s2.split("\\");
+console.log(w2);
+console.log(w2.join(","));
+o/p-
+hello ,jee ,kaise ,ho ,saare
+
+
