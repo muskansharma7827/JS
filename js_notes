@@ -566,3 +566,76 @@ let getexp = (num1,num2)=>{
     return num3;
 }
 console.log(getexp(3,6));
+
+ARRAYS IN JS-
+if I craete let arr[1,2,3];
+so, 1,2,3 are stored in heap memory and the arr, is stored in stack teher is pointing arrow in stack which points arr to 1,2,3 to heap memroy.
+there are refrence types-
+object
+array 
+function 
+OBJECT is a collection of key-value pairs.
+let obj = {
+    name : "muskan",
+    gender : "female",
+    "full name" : " muskan sharma",       
+
+}
+console.log(obj);
+is I write full name : "muskan sharma",
+ will give error bcz full and name has space in b/w space so, to sperate it put it in inverted commas.
+
+ **imp**
+ shallow and deep copy-
+ 
+---
+### ⚙️ **Shallow Copy**
+- Copies only the **top-level properties**.  
+- If a property is a **reference** (like an object or array), both copies point to the **same memory location**.  
+- Changes in nested objects affect both copies.  
+
+**Example:**
+```js
+let obj1 = { a: 1, b: { c: 2 } };
+let obj2 = { ...obj1 }; // shallow copy
+obj2.b.c = 99;
+console.log(obj1.b.c); // 99 (shared reference)
+```
+---
+
+### 🧬 **Deep Copy**
+- Duplicates **everything**, including nested objects.  
+- Each copy gets its **own memory space**.  
+- Changes in one object do **not** affect the other.  
+
+**Example:**
+```js
+let obj1 = { a: 1, b: { c: 2 } };
+let obj2 = structuredClone(obj1); // deep copy
+obj2.b.c = 99;
+console.log(obj1.b.c); // 2 (independent)
+```
+
+---
+
+### 🧠 **Quick Comparison**
+| Aspect | Shallow Copy | Deep Copy |
+|--------|--------------|-----------|
+| Top-level values | Copied | Copied |
+| Nested objects | Shared reference | Independent copy |
+| Memory usage | Less | More |
+| Independence | ❌ No | ✅ Yes |
+
+---
+👉 In short:  
+- **Shallow copy** = quick duplicate, but still linked.  
+- **Deep copy** = true duplicate, fully independent.  
+
+now, creation of array-
+arrays is a collection of items and elements-
+1st way od creating arrys-
+let arr = [ "hii" , "everybody" , 1, 3.15];
+console.log(arr);
+2nd way - array constructor
+let arr1 = new Array("hii" , "everybody" , 1, 3.15);
+console.log(arr1);
