@@ -472,4 +472,97 @@ console.log(w2.join(","));
 o/p-
 hello ,jee ,kaise ,ho ,saare
 
+PLAIN AND ARROW FUNCTIONS IN JS->
+why use function? bcz if I write 
+console.log("muskan");
+console.log("sharma");
+again I need 
+console.log("muskan");
+console.log("sharma");
+again I need 
+console.log("muskan");
+console.log("sharma");
+so, bcz of this teh code becomes heavy(bulky), duplicacy,and if I want muskan to change Muskan, so, there will be diffu;ty in debuggibg, so, function said 
+write this piece of code into me and I will perform tasks for you.
+function(){
+  console.log("muskan");
+ console.log("sharma");
+}
+so, bcz from function, it solves teh problem of bulkiness , debugging difficulty,snd the code becomes more readable,reusability.
+so, functions are the block of code, which do specific tasks.
+basic syntax-
+//function definition
+function dosomething(){
+    console.log("muskan");
+}
 
+//how to use function - function call
+dosomething()
+
+eg;
+function num(n1,n2){
+    let n3;
+    
+    //let n3=n1+n2;
+    //console.log(n3);
+    //
+    console.log(n3=n1+n2);
+
+
+}
+num(1,2);
+, **imp n1,n2 are the parameters and 1,2 are the arguments for the function call.
+
+now, return functions, when we go to the shop to buy groceries, so, we give moenya nd they give the stuff.
+so, here comes return function that means it will return something,like return stuff,
+how?
+function getmultiply(num1,num2,num3){
+    let num4 = num1*num2*num3;
+    return num4;
+
+}
+getmultiply(20,3.15,5678);
+,it will not give any o/p, 
+so, when shopkeeper, retiurn staff we have to put hand to hold the stuff, the how do we do with teh help of code-
+we, have to store the function call into a variable,
+ let ans = getmultiply(20,3.15,5678);
+ and need to print it-
+ 
+function getmultiply(num1,num2,num3){
+    let num4 = num1*num2*num3;
+    return num4;
+
+}
+ let ans = getmultiply(20,3.15,5678);
+ console.log("the result of multiplication of 3 nos. are:" , ans);
+
+ wg;
+ function getname(firstname,secondname){
+    let name = firstname + " " + secondname;
+    return name;
+    //unreachable statements
+    //let a = 8;
+    //let b=0;
+    //let sum = a+b;
+    //console.log(a+b);
+
+}
+let nameofperson = getname('Muskan','Sharma');
+console.log("The name is:" , nameofperson);
+**imp**
+the statement written under return will never get execute, bcz aftre return functiomn calls, and the code execiutes thta's it, it never gpoes to the unreac]
+ statement.
+
+ another way of writing function defintion-
+ let getmul = function(num1,num2){
+    return num1*num2;
+}
+let ans1 = getmul(90,678);
+console.log(ans1);
+
+another way of writing function defintion is arrow functions in js-
+let getexp = (num1,num2)=>{
+    let num3 = num1**num2;
+    return num3;
+}
+console.log(getexp(3,6));
