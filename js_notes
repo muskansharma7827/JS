@@ -639,3 +639,94 @@ console.log(arr);
 2nd way - array constructor
 let arr1 = new Array("hii" , "everybody" , 1, 3.15);
 console.log(arr1);
+
+Built-in methods-
+==> push-insert at end
+==> pop-remove last item
+==> shift-this is removing first item
+==> unshift-this is for adding first item
+==> slice-slicing means to show only siliced part 
+eg;
+let arr6=["HTML","CSS","JS","ReactJS"];
+//arr6.shift();
+//arr6.unshift("NodeJS");
+arr6.push("C");
+arr6.push("C++");
+arr6.push("Java");
+console.log(arr6);
+console.log(arr6.slice(0,4));
+o/p-
+[ 'HTML', 'CSS', 'JS', 'ReactJS', 'C', 'C++', 'Java' ]
+[ 'HTML', 'CSS', 'JS', 'ReactJS' ]   //only showing sliced part.
+
+==>
+splice-it means to add,delete or chmage contenteg;
+let a7=["tejasvi",19,"pretty"];
+console.log(a7);
+a7.splice(1,1,20);    //1 index se 1 value  ko remove kro aur usme 20 add kr do. 
+console.log(a7);
+o/p
+[ 'tejasvi', 19, 'pretty' ]
+[ 'tejasvi', 20, 'pretty' ]
+eg;
+let a7=["tejasvi",19,"pretty"];
+console.log(a7);
+a7.splice(1,0,"sharma"); ////1 index se 0 value  ko remove kro aur usme "sharma" add kr do. 
+console.log(a7);
+o/p
+[ 'tejasvi', 19, 'pretty' ]
+[ 'tejasvi', 'sharma', 19, 'pretty' ]
+
+==> map 
+eg;
+
+let a8=[10,20,30];
+let ans = a8.map((number) =>{
+    return number*number;
+})
+console.log(ans);
+let ans1= a8.map((number) =>{
+    return number+1;
+})
+console.log(ans1);
+
+ a8.map((number,index) =>{
+    console.log(number);
+    console.log(index);
+})
+
+==> filter- do filtering
+eg;
+let a9= [10,11,20,29];
+let ans = a9.filter((number) => {
+    if(number%2 == 0){
+       return true;
+    }
+    else{
+       return false;
+    }
+})
+console.log(ans);
+o/p
+[ 10, 20 ]
+
+eg;
+let a10=["yashu",20,1.4,-34];
+let ans = a10.filter((value) => {
+    if(typeof(value) === "number"){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+})
+console.log(ans); 
+o/p 
+[ 20, 1.4, -34 ] 
+
+
+==> reduce
+==> sort 
+==> indexof
+==> find
