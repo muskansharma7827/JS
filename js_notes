@@ -888,3 +888,99 @@ function getsum(arr){
     }
 }
 let ans = getsum(arr);
+
+
+NOW,CALL STACK AND HOISTING IN JS-
+Hoisting is the process of shifting var dec and fun declaration to the top in their scope.
+eg;
+function sayhello(greeting){
+    console.log(greeting);
+}
+sayhello("Hey!"); 
+o/p-
+Hey!
+ eg;
+ 
+sayhello("Hey!");
+
+function sayhello(greeting){
+    console.log(greeting);
+} 
+o/p-
+Hey!
+why, still printing Hey! bcz this is called hoisting to shift the function to teh top in theiur scope-
+before compilation this function shifte to teh top.
+
+eg;
+console.log(age);
+var age = 22;
+o/p-
+undefined
+why, bcz? the var age is shifted to teh top in their scope,but not its value, 
+before compliation-
+var age
+console.log(age);
+that's why undefined, bcz age has not any value,the var age is shifted to teh top in their scope,but not its value, ,it is called variable hoisting.
+but in case of function full function defintion shifted to top.,so,it is called function hoisting .
+
+above are the cases for let,if i amke a avraible usung lketa nd const-
+
+console.log(age);
+let age = 22;
+console.log(age);
+const age = 22;
+both will give error,Cannot access 'age' before initialization
+so, what is the best variable to use, let and const, not var bcz it creates confusion,if u want to use it, then declare , initlise then access it.
+
+now, if u use, function expression-then,
+eg;
+sayhello("Hey!");
+let sayhello = function(){
+    console.log("Hey!");
+}
+will give ReferenceError: Cannot access 'sayhello' before initialization
+IS class hoisting is possible in js?
+no, 
+const obj1 = new house();
+class house{
+
+}
+o/p-
+ReferenceError: Cannot access 'house' before initialization
+
+NOW,CALL STACK-
+stack is a type of datastrcuture which follows LIFO order.
+what is function call satck-pthis is like 
+D(){
+
+}
+
+C(){
+    
+}
+D()
+
+B(){
+    
+}
+C()
+
+A(){
+    
+} 
+B()
+
+after this nothing will get excute bcvz A() is not there, so, for it A() should be there, it searchses for A() and the will execute lines and after it B() so, it will serah for B()  will execute lines and after it B() , ti will got for C() and it will go further, then in stacks to show-
+D()
+C()
+B()
+A()
+then it executed the D() at last then, will pop from stack D(), like other varibles aswell-
+
+why function is called first class citizens-
+bcz in  functions 
+assign to variable
+as arguments
+return function
+use function in datastructure
+as property
