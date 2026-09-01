@@ -726,7 +726,165 @@ o/p
 [ 20, 1.4, -34 ] 
 
 
-==> reduce
-==> sort 
-==> indexof
-==> find
+==> reduce-
+reduce actually reduce , how, like arr=[10,20,30,40];
+there are 2 variables in reduce- accumulator and current, acc and curr if u do initialsie the acc with '0' or anything else, then curr will take first index vaqlue,of array , and if not initlise the acc with take first index value and curr will take second value.
+eg;
+let arr11=[10,20,30,40];
+let ans =arr11.reduce((acc,curr) => {
+    return acc+curr;
+},0);
+console.log(ans);
+o/p-
+100
+how,
+acc=0 value so, curr will take 10 value, then return c++curr=0+10=10, this 10 will store in acc,
+acc=10, curr=20,10+20=30
+acc=30,curr=30,30+30=60
+acc=60,curr=40,60+40=100
+acc=100
+ans=100
+
+
+==> sort -
+eg;
+let arr12=[1,100,70,35,-56];
+arr12.sort();
+console.log(arr12);
+it will sortin ascenmding order-
+[ -56, 1, 100, 35, 70 ]
+eg;
+let arr12=[1,100,70,35,-56];
+arr12.sort((a,b) => {
+    return a-b;
+})
+console.log(arr12);
+arr12.sort((a,b) => {
+    return b-a;
+})
+console.log(arr12);
+o/p-
+[ -56, 1, 35, 70, 100 ]
+[ 100, 70, 35, 1, -56 ]
+
+🔹 Intuition
+a - b: pushes smaller numbers forward → ascending
+b - a: pushes larger numbers forward → descending
+⚡ Think of it like this:
+a - b → "Put the smaller one first."
+b - a → "Put the bigger one first."
+
+
+==> indexof-
+let arr13=[1,100,70,35,-56];
+console.log(arr13.indexOf(1));
+console.log(arr13.indexOf(100));
+console.log(arr13.indexOf(70));
+console.log(arr13.indexOf(35));
+console.log(arr13.indexOf(-56));
+console.log(arr13.indexOf(10)); // 10 is not prsent so, it will return -1
+o/p-
+0
+1
+2
+3
+4
+-1
+
+
+==> find-
+eg;
+
+let arr14=[189,-20,300,6779];
+let ans =arr14.find(num => num > 1);
+console.log(ans);
+o/p-
+189
+👉 Explanation:
+Checks 189 → condition true → stops immediately.
+Returns 189.
+Array stays [189, -20, 300, 6779].
+
+HOW, TO TRAERSE THROUGH ARRAY USING foreach-
+let arr15=[189,-20,300,6779];
+arr15.forEach((value,index) => {
+    console.log("Value:" , value , "Index:" , index) 
+})
+o/p-
+Value: 189 Index: 0
+Value: -20 Index: 1
+Value: 300 Index: 2
+Value: 6779 Index: 3
+
+now, for-in-
+if u want to iterate thriugh enumerbale properties of objects-
+eg;
+let obj = {
+    name : "muskan",
+    gender : "female",
+    "full name" : " muskan sharma",  
+    greet : function(){
+        console.log("Goodmorning everybody")
+        }
+
+}
+
+for(let key in obj){
+    console.log(key, " ", obj[key]);
+}
+
+now, for-of loop
+iterable objects-arrays and strings
+eg;
+
+let arr16=[189,-20,300,6779];
+for(let value of arr16){
+    console.log(value);
+}
+
+let string = "life if full of surprises";
+for(let char  of string){
+    console.log(char);
+}
+o/p-
+189
+-20
+300
+6779
+l
+i
+f
+e
+ 
+i
+f
+ 
+f
+u
+l
+l
+ 
+o
+f
+ 
+s
+u
+r
+p
+r
+i
+s
+e
+s
+
+
+NOW, ARRAYS WITH FUNCTIONS-
+let arr17=[1,20,30];
+function getsum(arr){
+    let len = arr.length();
+    let sum=0;
+    for(int i=0;i<len;i++){
+        return sum= sum + arr[i];
+    }
+}
+let ans = getsum(arr);

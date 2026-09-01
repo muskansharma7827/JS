@@ -8,6 +8,11 @@ let obj = {
         }
 
 }
+
+for(let key in obj){
+    console.log(key, " ", obj[key]);
+}
+
 console.log(obj);
 obj.greet();
 console.log(typeof(obj))
@@ -81,7 +86,7 @@ let ans = a9.filter((number) => {
       /*
 })
 console.log(ans);
-*/
+
 
 let a10=["yashu",20,1.4,-34];
 let ans = a10.filter((value) => {
@@ -94,3 +99,69 @@ let ans = a10.filter((value) => {
 
 })
 console.log(ans);
+
+
+let arr11=[10,20,30,40];
+let ans =arr11.reduce((acc,curr) => {
+    return acc+curr;
+},0);
+console.log(ans);
+
+
+let arr12=[1,100,70,35,-56];
+arr12.sort((a,b) => {
+    return a-b;
+})
+console.log(arr12);
+arr12.sort((a,b) => {
+    return b-a;
+})
+console.log(arr12);
+
+
+let arr13=[1,100,70,35,-56];
+console.log(arr13.indexOf(1));
+console.log(arr13.indexOf(100));
+console.log(arr13.indexOf(70));
+console.log(arr13.indexOf(35));
+console.log(arr13.indexOf(-56));
+console.log(arr13.indexOf(10));
+
+
+let arr14=[189,-20,300,6779];
+let ans =arr14.find(num => num > 1);
+console.log(ans);
+
+
+let arr15=[189,-20,300,6779];
+arr15.forEach((value,index) => {
+    console.log("Value:" , value , "Index:" , index) 
+})
+
+
+let arr16=[189,-20,300,6779];
+for(let value of arr16){
+    console.log(value);
+}
+
+let string = "life if full of surprises";
+for(let char  of string){
+    console.log(char);
+}
+*/
+
+
+let arr17=[1,20,30];
+function getsum(arr17){
+    let len = arr17.length;
+    let sum=0;
+    for(let i=0;i<len;i++){
+         sum = sum + arr17[i];
+       
+    }
+    return sum;
+}
+let ans = getsum(arr17);
+console.log(ans);
+
+
