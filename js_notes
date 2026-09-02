@@ -1331,3 +1331,88 @@ means now u can also pass function as a default parameter.
 COMMON-INBUILTOBJECTS IN JS =>
 1.) Math is a object that is alreaday available.
 2.) Date is also a object available.
+
+NOW,OBJECT CLONING AND GARBAGE COLLECTOR IN JS->
+objects are in dynamic in nature means that u can change the values of object in runtime.
+eg;
+let obj = {
+    age:22,
+    height:180
+};
+console.log(obj);
+obj.color = "blue";
+console.log(obj);
+
+o/p-
+{ age: 22, height: 180 }
+{ age: 22, height: 180, color: 'blue' }
+
+now,object cloning means let a = {age:22};
+let b=a; this is not object cloning,
+object cloning can be done by spread operator,assign opearator,iteration operator.
+
+
+spread-
+eg;
+let src = {
+    age:22,
+    height:180
+};
+let dest = {...src};
+console.log(src);
+dest.age = 23;
+console.log(dest);
+
+/*
+let dest = src;
+dest.age = 23;
+console.log(src);
+
+console.log(dest);
+*/ 
+o/p-
+{ age: 22, height: 180 }
+{ age: 23, height: 180 }
+
+eg;
+let src = {
+    age:22,
+    height:180
+};
+/*let dest = {...src};
+console.log(src);
+dest.age = 23;
+console.log(dest);
+*/
+
+let dest = src;
+dest.age = 23;
+console.log(src);
+
+console.log(dest);
+
+o/p->
+{ age: 23, height: 180 }
+{ age: 23, height: 180 }
+
+
+
+assign-
+eg;
+let src = {
+    age:22,
+    height:180
+};
+
+let dest = Object.assign({},src);
+console.log(src);
+dest.age = 23;
+console.log(dest);
+
+o/p-
+{ age: 22, height: 180 }
+{ age: 23, height: 180 }
+
+
+
+iteration-
