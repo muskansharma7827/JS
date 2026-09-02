@@ -1075,3 +1075,256 @@ let age = 22;
 will give arror-ReferenceError: Cannot access 'age' before initialization
 and line 1071 to 1074 tk temporal dead zone h varaible access nhi kr skte.
 so, donot use global scoped  variables, always use let and const for predictablity.
+
+
+NOW,CLASSES AND DEFAULT parameters IN FUNCTIONS->
+class Human{
+     age = 22;
+     weight = 70;
+     height = 180;
+
+     walking(){
+        console.log("human can walk");
+     }
+     eating(){
+        console.log("human can eat");
+     }
+}
+
+let h1 = new Human();
+console.log(h1.walking());
+h1.eating();
+console.log(h1.age);
+--
+
+When the JavaScript engine executes the method calls and property accesses on the `h1` instance, it evaluates them in the following sequence:
+
+* **`console.log(h1.walking());`**: The script first evaluates the inner function call, `h1.walking()`. Inside the method, `console.log("human can walk")` runs, printing **human can walk**. Since the `walking()` method has no explicit `return` statement, it implicitly returns `undefined`. The outer `console.log()` then prints that returned **undefined**.
+* **`h1.eating();`**: The `eating()` method is called directly. This executes the internal `console.log("human can eat")`, printing **human can eat**.
+* **`console.log(h1.age);`**: The script accesses the `age` property initialized at the top of the `Human` class and prints **22**.
+
+Your provided output exactly matches this standard execution sequence and is correct.
+
+eg;
+class Human{
+     age = 22;
+     weight = 70; //public
+     #height = 180;   //priavate
+
+     walking(){
+        console.log("human can walk");
+     }
+     eating(){
+        console.log("human can eat");
+     }
+}
+
+let h1 = new Human();
+console.log(h1.walking());
+h1.eating();
+console.log(h1.age);
+console.log(h1.#heigt);
+o/p-
+SyntaxError: Private field '#height' must be declared in an enclosing class
+
+EG;
+class Human{
+     age = 22;
+     weight = 70; //public
+     #height = 180;   //priavate
+
+     walking(){
+        console.log("human can walk");
+     }
+     eating(){
+        console.log("human can eat", this.#height);
+     }
+}
+
+let h1 = new Human();
+h1.walking();
+h1.eating();
+console.log(h1.age);
+, in this eaxmple if i wanmt to access the clads properties in behaviour properites in class, so, use this keyword which means this will indicates that it i a object h1.so, it works fine.
+**imp**
+now, it is clear that if I want to access properies whiuch are private can access in class using this keyword, but how to access it oiutside class so, there is a concept coems getter and setter methods.
+eg;
+class Human{
+    //properties
+     age = 22;
+     weight = 70; //public
+     #height = 180;   //priavate
+     
+     //behaviors
+     walking(){
+        console.log("human can walk");
+     }
+     eating(){
+        console.log("human can eat", this.#height);
+     }
+
+     get fetchHeight(){
+        return this.#height;
+     }
+     set modifyHeight(value){
+        this.#height = value;
+     }
+}
+
+let h1 = new Human();
+h1.walking();
+h1.eating();
+console.log(h1.age);
+console.log(h1.fetchHeight);
+h1.modifyHeight = 190;
+console.log(h1.fetchHeight);
+o/p-
+human can walk
+human can eat 180
+22
+180
+190
+
+expalanation-
+these getter and setter methods used to access priavte properties outisde class , with tehnsyuntax as shown, if u didnot write get and set only and write as it is it will still works fine, but we add geta nd set gives the clarity, these getetra nd stter methods provides abstractionand encapsulation . 
+**imp**
+You are spot on with your explanation. While regular methods like `getHeight()` and `setHeight(value)` can achieve the same result, the specific `get` and `set` keywords deeply reinforce both encapsulation and abstraction by making functions behave like simple properties.
+**Encapsulation (Protecting the Data)**
+* **The Concept:** Encapsulation is about bundling data (properties) and methods together while restricting direct access to the internal state. Think of it as putting a protective shield around your data.
+* **How `get` and `set` achieve it:** By making `#height` private, you prevent outside code from recklessly modifying it (e.g., someone typing `h1.#height = -500`). The setter acts as a gatekeeper. While your current setter just assigns the value, its real power lies in control. You can add logic inside `set modifyHeight(value)` to validate the data—like checking `if (value > 0)`—before allowing the private property to actually change.
+**Abstraction (Hiding the Complexity)**
+* **The Concept:** Abstraction is about hiding complex, messy implementation details from the user and exposing only a clean, simple interface.
+* **How `get` and `set` achieve it:** Notice how you wrote `h1.modifyHeight = 190` instead of `h1.modifyHeight(190)`. To the outside developer using your class, modifying or reading the height looks exactly like interacting with a standard, public variable. They don't need to know that a private `#height` variable even exists, nor do they need to know if you are running complex math, unit conversions, or API calls behind the scenes when they assign that number. You have abstracted away the "how" and only given them a simple interface to use.
+By using getters and setters, you get the best of both worlds: the strict data protection of encapsulation, packaged within the clean, simple-to-read syntax of abstraction.
+
+eg;
+class Human{
+    //properties
+     age;
+     weight = 70; //public
+     #height = 180;   //private
+     
+
+     constructor(newage,newheight){
+        this.age = newage;
+        this.#height = newheight; 
+     }
+     //behaviors
+     walking(){
+        console.log("human can walk");
+     }
+     eating(){
+        console.log("human can eat", this.#height);
+     }
+
+     get fetchHeight(){
+        return this.#height;
+     }
+     set modifyHeight(value){
+        this.#height = value;
+     }
+}
+
+let h1 = new Human(22,180);
+console.log(h1.age);
+console.log(h1.fetchHeight);
+o/p-
+22
+180
+
+explaination-
+actually, what happens in above code, constructor is a special tyep of function which is used to intialise, so, if I donot want to put age,and if I want to put teh newheight value, so, i can use constructor, and to priont it, if private then use getter.
+
+**imp**
+default paarmeters means if u donot put parameter aregument in fucntion calling, so how it behaves.
+eg;
+function name(fname,lname="Doe"){
+    console.log(fname + " " + lname);
+}
+name("John");
+
+function name(fname,lname="Doe"){
+    console.log(fname + " " + lname);
+}
+name("John");
+
+function name(fname="John",lname="Doe"){
+    console.log(fname + " " + lname);
+}
+name();
+**imp**
+means if u miss to pass argumnet then u pass deafult parametrs in functiom itself.
+
+eg;
+function sayhello(greeting = "Hello", name = "people"){
+    console.log(greeting , name);
+}
+sayhello("hey", "John");
+o/p-
+hey John
+
+eg;
+function sayhello(greeting = "HELLO", name = greeting.toLowerCase()){
+    console.log(greeting , name);
+}
+sayhello();
+O/P-
+HELLO hello
+
+IT MEANS THE SECOND PARAEMETER VALUE IS DEPENDENT ON FIRST ONE.
+ eg;
+ function solve(value ={age:22, weight:70}){
+    console.log(value);
+}
+solve();
+
+function solve1(value =["muskan" , "sharma" , "cse"]){
+    console.log(value);
+}
+solve1();
+
+o/p-
+{ age: 22, weight: 70 }
+[ 'muskan', 'sharma', 'cse' ]
+
+explain-
+means as a default PARAEMETER, classes and arrays can also be passed.
+eg;
+function solve(value = "hii"){
+    console.log(value);
+}
+solve(null);
+
+function solve2(value = "hii"){
+    console.log(value);
+}
+solve2(undefined);
+o/p-
+null
+hii
+
+explain-
+means if u pass null and undefined to thw argumnet, in vcase of null it will give null as an op but if u pass undefined, it iwll take deafult value.
+  eg;
+  function utility(name = "msukan", age = 22, weight){
+    console.log(name, age, weight);
+}
+utility("muskan", 22);
+
+o/p-
+muskan 22 undefined 
+
+eg;
+function getAge(){
+    return 22;
+}
+function utility(name = "muskan", age = getAge()){
+    console.log(name, age);
+}
+utility("muskan");
+
+o/p-
+muskan 22
+
+means now u cana lso pass function as a default parameter.
+
