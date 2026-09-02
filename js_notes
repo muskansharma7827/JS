@@ -1326,5 +1326,8 @@ utility("muskan");
 o/p-
 muskan 22
 
-means now u cana lso pass function as a default parameter.
+means now u can also pass function as a default parameter.
 
+COMMON-INBUILTOBJECTS IN JS =>
+1.) Math is a object that is alreaday available.
+2.) Date is also a object available.
