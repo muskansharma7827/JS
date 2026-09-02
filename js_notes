@@ -984,3 +984,94 @@ as arguments
 return function
 use function in datastructure
 as property
+
+Temporal Dead Zone in js-
+the variables can be global scoped,block and function scoped, 
+the global scoped variables made using let,var,const can be accessed anyhwhere, like in blocks,function,for loop,if.
+now, functiomn scoped-
+eg;
+console.log(age);
+function sayhello(){
+    const age = 22;
+    
+}
+sayhello();
+
+eg;
+
+function sayhello(){
+    const age = 22;
+    
+}
+console.log(age);
+sayhello();
+
+in bothn examples the o/p will be age is not defiend, so, it tell that function scoped means the variables creates in teh function will be access only in teh fcuntions not outside anywhere it cannot be accessed.
+
+now, block scoped-
+eg;
+ console.log(age);
+{
+    var age = 22;
+   
+}
+
+ console.log(age);
+{
+    let age = 22;
+   
+}
+
+ console.log(age);
+{
+    const age = 22;
+   
+}
+o/p-
+undefined
+22
+22
+
+The output of your JavaScript code comes down to two key concepts: hoisting and block scope.
+
+* **`var` is hoisted and not block-scoped:** The first block uses `var`, which ignores the `{}` brackets. JavaScript "hoists" the variable declaration to the very top of the script before the code runs, but leaves the assignment (`= 22`) where it is. This is why the first `console.log(age)` knows the variable exists but prints **undefined**. Once the code enters the block, the global `age` becomes `22`.
+* **`let` and `const` are block-scoped:** The second and third blocks use `let` and `const`. These strictly confine their variables inside the `{}` brackets. Once those specific blocks finish executing, those inner variables are destroyed.
+* **The outer logs read the global variable:** Because `let` and `const` only exist inside their temporary blocks, they are invisible to the rest of the script. The second and third `console.log(age)` statements simply look for the global `age` variable—which was permanently set to **22** during the first step—and print it both times.
+
+eg;
+{
+    var age =22;
+}
+console.log(age);
+o/p-
+22
+it is giving o/p in this case bcvz var is block scoped.but,
+console.log(age);
+{
+    var age =22;
+} o/p-
+undefined
+
+**imp**
+let,const - blocks m hi access ho skte h  and var blocks ke bahar access ho skte h , that's why let,const-block and var-function and global scoped h but var block scoped nhu h .
+   
+**imp**   
+console.log(age);
+var age = 22;                    //undefined
+
+console.log(age);
+let age = 22;                      // cannot access age before initialization
+
+
+console.log(age);
+const age = 22;                  // cannot access age before initialization
+
+now, what is temporal dead zone in js - (interview ques)
+eg;
+console.log(age);
+console.log("hello");
+console.log("people");
+let age = 22;
+will give arror-ReferenceError: Cannot access 'age' before initialization
+and line 1071 to 1074 tk temporal dead zone h varaible access nhi kr skte.
+so, donot use global scoped  variables, always use let and const for predictablity.
