@@ -1449,3 +1449,134 @@ try to always use spreda nd assign operator for object cloning bcz with iteratio
 now,garbage collector ,
 what is memory leak-it is the memory that should be free, bcz of no longer use, but right now tat memeory is not free thta's why it is caleld memory leak.
 **JavaScript uses an automatic Garbage Collector to manage memory. Objects that are no longer reachable from any active reference become eligible for garbage collection and their memory is freed automatically. Developers cannot directly free memory, but they can remove references (e.g., assigning null) so the garbage collector can reclaim the memory.**
+
+NOW,ERROR HANDLING IN JS-
+Error is an event that disrupt the flow of an event.
+types of error-
+1.run time error
+2.complie time error
+
+in error handling , the 3 bloxks come-
+try catch and finally
+eg;
+
+try{
+    console.log("try block starts here");
+    console.log(x);
+    console.log("try block ends here");
+
+}
+catch(err){
+    console.log("An error occurred:" , err);
+}
+o/p-
+try block starts here
+An error occurred: ReferenceError: x is not defined
+    at Object.<anonymous> (C:\Users\muska\OneDrive\Desktop\js_content\js_lecture12\lecture12.js:4:17)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+explain-
+first control goes to try block- and print try block starts here
+then next line to print x and here comes an error, refrence error, so, then when tge error comes it immediatley goes to catch block, and print 
+An error occurred: then , err so, it means now err, that is error, so, ;rint refernce error, ane err with catch is object for error.
+
+eg;
+try{
+    console.log("try block starts here");
+    console.log(x);
+    console.log("try block ends here");
+
+}
+catch(err){
+    console.log("An error occurred:" , err);
+}
+finally{
+    console.log("I am the finally block that will execute everytime.")
+}
+
+o/p-
+try block starts here
+An error occurred: ReferenceError: x is not defined
+    at Object.<anonymous> (C:\Users\muska\OneDrive\Desktop\js_content\js_lecture12\lecture12.js:4:17)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+I am the finally that will execute everytime.
+
+eg;
+try{
+    let x = 10;
+    console.log(x);
+}
+catch(err){
+    console.log("the control will not come to catch block bcz when printing x x has alreday a valye, so, teh control will goes tom finally block.")
+}
+finally{
+    console.log("hii I am the fianlly block,i will execute everytime.")
+    
+}
+
+o/p-
+10
+hii I am the fianlly block,i will execute everytime.
+
+**imp**
+try...catch...finally Summary
+
+There are 3 valid forms of exception handling in JavaScript:
+1. try...catch
+Used when you want to handle errors
+2. try...finally
+Used when you want some code to execute regardless of whether an error occurs.
+3. try...catch...finally
+Used when you want to handle errors and also execute cleanup code.
+**Invalid Form-
+A try block cannot be used alone.**
+❌ Syntax Error
+A try block must be followed by either a catch block, a finally block, or both.
+=>In JavaScript, there are three valid forms: try...catch, try...finally, and try...catch...finally. A try block cannot exist without either a catch or finally block. catch is used for error handling, while finally is used for code that must execute regardless of success or failure.
+
+now,comes throw error whiuch means that if I want to print my error, meanms custom the error, the error will show on o/p screen will be trge error that i wnat to put, that can throw in thrwo block.
+
+eg;
+
+try{
+    console.log(x);
+}
+catch(err){
+    throw new Error("this will print reference error but still i wnat to print that phle declare kr phir print kr statement that i can print in this throw error block.");
+}
+finally{
+    console.log("hii , i will execute everytime.");
+}
+
+o/p-
+hii , i will execute everytime.
+C:\Users\muska\OneDrive\Desktop\js_content\js_lecture12\lecture12.js:36
+    throw new Error("this will print reference error but still i wnat to print that phle declare kr phir print kr statement that i can print in this throw error block.");
+    ^
+
+Error: this will print reference error but still i wnat to print that phle declare kr phir print kr statement that i can print in this throw error block.
+    at Object.<anonymous> (C:\Users\muska\OneDrive\Desktop\js_content\js_lecture12\lecture12.js:36:11)
+    at Module._compile (node:internal/modules/cjs/loader:1872:14)
+    at Object..js (node:internal/modules/cjs/loader:2003:10)
+    at Module.load (node:internal/modules/cjs/loader:1594:32)
+    at Module._load (node:internal/modules/cjs/loader:1396:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.19.0
+
+exp;ain-
+first try block, error, so, catch phir se throw kr rhe h new error, so, before executing throw error, the control goes to finally bloc, if exists, so, print fianlly block styatemnt, then throw the error,that u wnatn to rpint.
