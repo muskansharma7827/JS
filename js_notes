@@ -1578,5 +1578,130 @@ Error: this will print reference error but still i wnat to print that phle decla
 
 Node.js v24.19.0
 
-exp;ain-
+explain-
 first try block, error, so, catch phir se throw kr rhe h new error, so, before executing throw error, the control goes to finally bloc, if exists, so, print fianlly block styatemnt, then throw the error,that u wnatn to rpint.
+
+
+NOW,JS DOM MANIPLUATION - ACCESS/INSERT/UPDATE/DELETE ELEMENTS.
+here, new terms comes like window, so, window is like a top level hierarchy, its object is called gloval object,global var,global methods.u can write window.open(); in a browser in inspect, in console,then the new window will get open,and if u write window.close(); that window will get close.
+now, DOM-(Document Object Model)- 
+u have ur html code, if u put that heml code into a js object then that object is called documenht, so, thsi is called DOM.
+how, if u will go any browser write doucment in console, then itm will its html code, that is called DOM.
+now, how can u represnt itnom a tree like structure,
+<html>
+ <head>   .....     </head>
+  <body> ....     <body>
+</html>
+
+so, characters -> tags -> token -> node -> DOM
+tag is html first it will be a node, then so on,...
+     html 
+    |    |
+   head  body
+so, this tree like strcuture is DOM(BAHUT SAARI NODES AAGE CHLKR DOM BNA RHI H).
+
+NOW, everuthing lie inside window
+                             |
+                          DOM BOM JSCore 
+we know whta is DOM, JS core also understood, now what is BOM it is Browser Object Model
+it means that html content put in doucment called DOM, and except html content it is called BOM.
+, now, if I wnat to change teh html content in js part, so, can do, how, to access to change teh content, bu IDs, classname, tagname.in response - single o/p, multiplr o/p.
+go to inspect , console, then write 
+eg;
+document.getElementById("fpara")
+<p id=​"fpara" class=​"paraclass">​ paragraph ​</p>​
+
+eg;
+document.getElementsByClassName("paraclass")
+HTMLCollection [p#fpara.paraclass, fpara: p#fpara.paraclass]
+0
+: 
+p#fpara.paraclass
+fpara
+: 
+p#fpara.paraclass
+length
+: 
+1
+[[Prototype]]
+: 
+HTMLCollection
+document.getElementsByClassName("headingclass")
+HTMLCollection [h1#fhead.headingclass, fhead: h1#fhead.headingclass]
+0
+: 
+h1#fhead.headingclass
+fhead
+: 
+h1#fhead.headingclass
+length
+: 
+1
+[[Prototype]]
+: 
+HTMLCollection
+
+
+see, is teher any oteher methos to access, yes, by querySelector, in this u can put id and class to access,
+document.querySelector("#fpara")
+document.querySelector(".headingclass")
+like this, but,
+ <p id="fpara" class="paraclass">
+        fparagraph
+    </p>
+     <p id="spara" class="paraclass">
+        sparagraph
+    </p>
+     <p id="tpara" class="paraclass">
+        tparagraph
+    </p>
+     <p id="fopara" class="paraclass">
+        foparagraph
+    </p>
+     <p id="fipara" class="paraclass">
+        fiparagraph
+    </p>
+
+if I have this code, so, and when i will write 
+document.querySelector(".paraclass")
+it wil, give only 1st pargarpg, but the classname is same for 5 pargarphs, so, this is teh disadvanatge, of this , so, to access full , use
+document.querySelectorAll(".paraclass")
+so, it will give ful list.
+same happened with class also.
+
+see, now, u have seen to access the elements, by getElementById,classname, and by querySelector,now 1 methos is also teher to access ,
+go to browser, inspect , now click the sleect the elemnt in thjsi page to inspect, by pressing ctrl+shift+c
+or this is an arrow, at the top corner, cliock this arrow, and then go select that any pic,heading in the webpabge shown in dimensions part, the go to console, write $0,
+why $0, bcz whenu sleect teh pic, or anything, it will show $0, som this is also the way.
+
+now, how can u update, 
+by 4 methods-
+innerHTML
+outerHTML
+text-content
+innerText
+ 1.)
+ select teh pic.headi g that u wnat to update,
+first get and then set how,
+$0
+let para = $0
+para.innerHTML // it will give teh tag present inside para
+this is get until
+
+now, set
+para.innerHTML =' <p MUSKAN > </p>'
+it wil set the value Muskan
+
+now, text-content, it is it will give all the content avaliable in html, 
+but inner-text will give the text which will render (display).
+can study codehelp,DOM update.
+now, insert.
+createElement() and .appendChild() , the content will appaned means insert at last.
+so, can we adjust the content where we want to insert that.
+insertAdjacentElement() -
+position -before begin,after begin,before end,after end.
+HTML content 
+
+now,removal
+remove-Child()
+parent.remove-Child(Child);
