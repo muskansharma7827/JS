@@ -1,4 +1,4 @@
-let src = {
+/*let src = {
     age:22,
     height:180
 };
@@ -23,4 +23,22 @@ dest.age = 23;
 console.log(dest);
 */
 
+let src={
+    age:22,
+    height:180,
+    weight:80,
+}
+let dest  = {};
+for(let key in src){
+    let newkey = key;
+    let newvalue = src[key];
+    //insert newkey and newvalue into dest and create a clone
+    dest[newkey]= newvalue;
+}
+console.log(src);
+console.log(dest);
 
+src.age = 60;
+
+console.log(src);
+console.log(dest);

@@ -1332,7 +1332,7 @@ COMMON-INBUILTOBJECTS IN JS =>
 1.) Math is a object that is alreaday available.
 2.) Date is also a object available.
 
-NOW,OBJECT CLONING AND GARBAGE COLLECTOR IN JS->
+NOW,OBJECT CLONING(**INTERVIEW**) AND GARBAGE COLLECTOR IN JS->
 objects are in dynamic in nature means that u can change the values of object in runtime.
 eg;
 let obj = {
@@ -1416,3 +1416,36 @@ o/p-
 
 
 iteration-
+eg;
+
+let src={
+    age:22,
+    height:180,
+    weight:80,
+}
+let dest  = {};
+for(let key in src){
+    let newkey = key;
+    let newvalue = src[key];
+      //insert newkey and newvalue into dest and create a clone
+    dest[newkey]= newvalue;
+}
+console.log(src);
+console.log(dest);
+
+src.age = 60;
+
+console.log(src);
+console.log(dest);
+ o/p-
+ { age: 22, height: 180, weight: 80 }
+{ age: 22, height: 180, weight: 80 }
+{ age: 60, height: 180, weight: 80 }
+{ age: 22, height: 180, weight: 80 }
+
+**imp**
+try to always use spreda nd assign operator for object cloning bcz with iteration opertaor the things become complex.
+
+now,garbage collector ,
+what is memory leak-it is the memory that should be free, bcz of no longer use, but right now tat memeory is not free thta's why it is caleld memory leak.
+**JavaScript uses an automatic Garbage Collector to manage memory. Objects that are no longer reachable from any active reference become eligible for garbage collection and their memory is freed automatically. Developers cannot directly free memory, but they can remove references (e.g., assigning null) so the garbage collector can reclaim the memory.**
